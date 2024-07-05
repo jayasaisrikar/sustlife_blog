@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mx-auto mt-8">
+    <h2 class="text-2xl font-bold mb-4">All Blogs</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+        {% for blog in blogs %}
+        <div class="bg-white p-6 rounded-lg shadow-md">
+            <h3 class="text-xl font-bold mb-2"><a href="{% url 'blog_detail' pk=blog.pk %}" class="text-green-600 hover:underline">{{ blog.title }}</a></h3>
+            {% if blog.image %}
+            <div class="mb-4">
+                <img src="{{ blog.image.url }}" alt="{{ blog.title }}" class="rounded-lg shadow-lg">
+            </div>
+            {% endif %}
+            <p class="text-gray-600 mb-4">{{ blog.content|truncatewords:20 }}</p>
+            <div class="flex items-center justify-between text-gray-600">
+                <div>
+                    <p>Author: {{ blog.author.username }}</p>
+                    <p>Posted on: {{ blog.created_at }}</p>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="{% url 'edit_blog' pk=blog.pk %}" class="text-blue-600 hover:text-blue-800">
+                        <img src="https://cdn1.iconfinder.com/data/icons/unicons-line-vol-3/24/edit-256.png" alt="Edit Icon" class="h-6 w-6 inline-block">
+                    </a>
+                    <a href="{% url 'delete_blog' pk=blog.pk %}" class="text-red-600 hover:text-red-800">
+                        <img src="https://cdn3.iconfinder.com/data/icons/font-awesome-regular-1/512/trash-can-256.png" alt="Delete Icon" class="h-6 w-6 inline-block">
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="mt-8 text-center">
+        <a href="{% url 'blog_list' %}" class="bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded-md inline-block">View All Blog Posts</a>
+    </div>
+</div>
+{% endblock %}

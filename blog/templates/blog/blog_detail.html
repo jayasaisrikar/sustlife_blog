@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mx-auto mt-8">
+    <div class="bg-white shadow overflow-hidden sm:rounded-lg">
+        <div class="px-4 py-5 sm:px-6">
+            <h3 class="text-lg leading-6 font-medium text-gray-900">{{ blog.title }}</h3>
+            <p class="mt-1 max-w-2xl text-sm text-gray-500">Posted on {{ blog.created_at }}</p>
+        </div>
+        <div class="px-4 py-5 sm:p-0">
+            {% if blog.image %}
+            <div class="text-center">
+                <img src="{{ blog.image.url }}" alt="{{ blog.title }}" class="mx-auto rounded-lg shadow-lg">
+            </div>
+            {% endif %}
+            <div class="border-t border-gray-200 px-4 py-5 sm:p-0">
+                <dl class="sm:divide-y sm:divide-gray-200">
+                    <div class="sm:flex sm:space-x-4 sm:items-start sm:px-6 sm:py-6">
+                        <dt class="text-sm font-medium text-gray-500 sm:w-1/4">Title</dt>
+                        <dd class="mt-1 text-sm text-gray-900 sm:col-span-3">{{ blog.title }}</dd>
+                    </div>
+                    <div class="sm:flex sm:space-x-4 sm:items-start sm:px-6 sm:py-6">
+                        <dt class="text-sm font-medium text-gray-500 sm:w-1/4">Content</dt>
+                        <dd class="mt-1 text-sm text-gray-900 sm:col-span-3">{{ blog.content }}</dd>
+                    </div>
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

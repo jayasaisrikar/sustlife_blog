@@ -1,0 +1,22 @@
+sustlife/
+├── blog/
+│   ├── __init__.py
+│   ├── admin.py
+│   ├── apps.py
+│   ├── migrations/
+│   │   └── __init__.py
+│   ├── models.py
+│   ├── templates/
+│   │   └── blog/
+│   │       ├── home.html
+│   │       └── post_detail.html
+│   ├── tests.py
+│   ├── urls.py
+│   └── views.py
+├── sustlife/
+│   ├── __init__.py
+│   ├── asgi.py
+│   ├── settings.py
+│   ├── urls.py
+│   └── wsgi.py
+├── manage.py
